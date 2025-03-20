@@ -6,6 +6,8 @@ import org.springframework.stereotype.Repository;
 import com.cdbd.account.infrastructure.jpa.entity.UserEntity;
 
 @Repository
-public interface UserRepository extends JpaRepository<UserEntity, String>{
+public interface UserJpaRepository extends JpaRepository<UserEntity, String>{
+
+	UserEntity findByUserName(String userName);
 
 }

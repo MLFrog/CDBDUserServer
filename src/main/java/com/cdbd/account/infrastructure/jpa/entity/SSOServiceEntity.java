@@ -4,6 +4,8 @@ import java.sql.Timestamp;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Data;
@@ -13,10 +15,14 @@ import lombok.Data;
 @Table(name = "ssoService")
 public class SSOServiceEntity {
 	@Id
-	@Column(name = "ssoServiceId") //sso서비스아이디 (FK)
-    private String ssoServiceId;
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // 자동 증가 전략
+    @Column(name = "ID") // ID 컬럼을 추가
+    private Long id;  // 새로운 ID 컬럼을 추가
 	
-	@Column(name = "ssoServiceName") //sso서비스이름
+	@Column(name = "ssoId") //sso 통합로그인 id
+    private String ssoId;
+	
+	@Column(name = "ssoServiceName") //sso 통합로그인 서비스이름
     private String ssoServiceName;
 
 	@Column(name = "createdAt", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")

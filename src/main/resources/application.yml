@@ -1,0 +1,33 @@
+spring:
+
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driverClassName: org.h2.Driver
+    username: sa
+    password: 1234
+    
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+
+  h2:
+    console:
+     enabled: true
+     path: /h2-console
+    
+  # Swagger
+  springdoc:
+    version: '@springdoc.version@'
+    swagger-ui:
+      display-request-duration: true
+      groups-order: DESC
+      operationsSorter: method
+      disable-swagger-default-url: true
+      use-root-path: true
+    show-actuator: true
+    group-configs:
+      - group: stores
+        paths-to-match: /swagger/**
+    
+# Server Port
+server:
+  port: 8080
